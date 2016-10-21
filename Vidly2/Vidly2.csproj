@@ -243,6 +243,10 @@
     <Compile Include="Migrations\201610212219163_AddRequiredNameToMembershipTypeTable.Designer.cs">
       <DependentUpon>201610212219163_AddRequiredNameToMembershipTypeTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610212317080_CreateMovieTable.cs" />
+    <Compile Include="Migrations\201610212317080_CreateMovieTable.Designer.cs">
+      <DependentUpon>201610212317080_CreateMovieTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -365,6 +369,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610212219163_AddRequiredNameToMembershipTypeTable.resx">
       <DependentUpon>201610212219163_AddRequiredNameToMembershipTypeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610212317080_CreateMovieTable.resx">
+      <DependentUpon>201610212317080_CreateMovieTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
