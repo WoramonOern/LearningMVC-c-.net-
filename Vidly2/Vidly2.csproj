@@ -231,6 +231,14 @@
     <Compile Include="Migrations\201610211842410_RenameSignupfeeInMembershipType.Designer.cs">
       <DependentUpon>201610211842410_RenameSignupfeeInMembershipType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610212110270_AddBirthDateInCustomerTable.cs" />
+    <Compile Include="Migrations\201610212110270_AddBirthDateInCustomerTable.Designer.cs">
+      <DependentUpon>201610212110270_AddBirthDateInCustomerTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610212112343_AddDataOfBirthdateToCustomerTable.cs" />
+    <Compile Include="Migrations\201610212112343_AddDataOfBirthdateToCustomerTable.Designer.cs">
+      <DependentUpon>201610212112343_AddDataOfBirthdateToCustomerTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -240,6 +248,7 @@
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CustomerMembershipTypeViewModel.cs" />
     <Compile Include="ViewModels\RandomMovieViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -343,6 +352,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610211842410_RenameSignupfeeInMembershipType.resx">
       <DependentUpon>201610211842410_RenameSignupfeeInMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610212110270_AddBirthDateInCustomerTable.resx">
+      <DependentUpon>201610212110270_AddBirthDateInCustomerTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610212112343_AddDataOfBirthdateToCustomerTable.resx">
+      <DependentUpon>201610212112343_AddDataOfBirthdateToCustomerTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
