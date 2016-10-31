@@ -13,7 +13,7 @@
 </div>
 
 <div class="row">
-    @using (Html.BeginForm("Create", "Customers", new { imgid = @Model }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("Save", "Customers", new { imgid = @Model }, FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         <div class="form-group">
             @Html.LabelFor(m => m.customers.Name)
@@ -47,7 +47,7 @@
                 @Html.HiddenFor(m => m.customers.IsSubscribedToNewsletter)
             </label>
         </div>
-            
+            @Html.HiddenFor(m =>m.customers.Id)
             <button type="submit" class="btn btn-primary">Save</button>
 
     }

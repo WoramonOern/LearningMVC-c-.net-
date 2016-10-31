@@ -34,7 +34,7 @@ namespace Vidly2.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(CustomerMembershipTypeViewModel postCustomer)//(CustomerMembershipTypeViewModel viewModel) // customer class is easy to pass all of data
+        public ActionResult Save(CustomerMembershipTypeViewModel postCustomer)//(CustomerMembershipTypeViewModel viewModel) // customer class is easy to pass all of data
         {
             var customer = new Customer
             {
@@ -44,8 +44,20 @@ namespace Vidly2.Controllers
                 BirthDate = postCustomer.customers.BirthDate
                 //BirthDate = new DateTime(2010, 03, 18)
             };
-            // is a memory - not add to db yet
-            _context.Customers.Add(customer);
+
+            if (postCustomer.customers.Id == 0)
+                _context.Customers.Add(customer);   // is a memory - not add to db yet
+            else
+            {
+                customer.Id = postCustomer.customers.Id;
+
+                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
+                // Mapper.Map(customer, customerInDb);
+                customerInDb.Name = customer.Name;
+                customerInDb.BirthDate = customer.BirthDate;
+                customerInDb.MembershipTypeId = customer.MembershipTypeId;
+                customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
+            }
             //// save/modify all of data to the db 
             _context.SaveChanges();
 
