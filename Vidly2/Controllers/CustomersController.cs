@@ -17,11 +17,11 @@ namespace Vidly2.Controllers
             _context = new ApplicationDbContext();
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            //base.Dispose(disposing);
-            _context.Dispose();
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    //base.Dispose(disposing);
+        //    _context.Dispose();
+        //}
 
         public ActionResult New()
         {
@@ -30,17 +30,26 @@ namespace Vidly2.Controllers
             {
                 membershiptypes = membershipTypes
             };
-            return View(viewModel);
+            return View("CustomerForm", viewModel);
         }
 
         [HttpPost]
-        public ActionResult Create(Customer customer)//(CustomerMembershipTypeViewModel viewModel) // customer class is easy to pass all of data
+        public ActionResult Create(CustomerMembershipTypeViewModel postCustomer)//(CustomerMembershipTypeViewModel viewModel) // customer class is easy to pass all of data
         {
+            var customer = new Customer
+            {
+                Name = postCustomer.customers.Name,
+                IsSubscribedToNewsletter = postCustomer.customers.IsSubscribedToNewsletter,
+                MembershipTypeId = postCustomer.customers.MembershipTypeId,
+                BirthDate = postCustomer.customers.BirthDate
+                //BirthDate = new DateTime(2010, 03, 18)
+            };
             // is a memory - not add to db yet
             _context.Customers.Add(customer);
-            // save/modify all of data to the db 
+            //// save/modify all of data to the db 
             _context.SaveChanges();
-            return RedirectToAction("Index","Customers");
+
+            return RedirectToAction("Index", "Customers"); 
         }
 
         // GET: Customers
@@ -64,6 +73,19 @@ namespace Vidly2.Controllers
             return View(customer);
         }
 
+        public ActionResult Edit(int id)
+        {
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+            if (customer == null)
+                return HttpNotFound();
+
+            var viewModel = new CustomerMembershipTypeViewModel
+            {
+                customers = customer,
+                membershiptypes = _context.MembershipTypes.ToList()
+            };
+            return View("CustomerForm", viewModel);
+        }
         //private IEnumerable<Customer> GetCustomers()
         //{
         //    return new List<Customer>()
