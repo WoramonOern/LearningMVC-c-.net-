@@ -17,11 +17,11 @@ namespace Vidly2.Controllers
             _context = new ApplicationDbContext();
         }
 
-        //protected override void Dispose(bool disposing)
-        //{
-        //    //base.Dispose(disposing);
-        //    _context.Dispose();
-        //}
+        protected override void Dispose(bool disposing)
+        {
+            //base.Dispose(disposing);
+            _context.Dispose();
+        }
 
         public ActionResult New()
         {
@@ -44,6 +44,16 @@ namespace Vidly2.Controllers
                 BirthDate = postCustomer.customers.BirthDate
                 //BirthDate = new DateTime(2010, 03, 18)
             };
+
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new CustomerMembershipTypeViewModel
+                {
+                    customers = customer,
+                    membershiptypes = _context.MembershipTypes.ToList()
+                };
+                return View("CustomerForm", viewModel);
+            }
 
             if (postCustomer.customers.Id == 0)
                 _context.Customers.Add(customer);   // is a memory - not add to db yet

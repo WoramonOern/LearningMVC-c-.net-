@@ -18,17 +18,18 @@
         <div class="form-group">
             @Html.LabelFor(m => m.customers.Name)
             @Html.TextBoxFor(m => m.customers.Name, new { @class = "form-control" })
-            @Html.HiddenFor(m => m.customers.Name)
+            @*@Html.HiddenFor(m => m.customers.Name)*@
+            @Html.ValidationMessageFor(m => m.customers.Name)
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.customers.BirthDate)
             @Html.TextBoxFor(m => m.customers.BirthDate, "{0:d MMM yyyy}", new { @class = "form-control" })
-            @Html.HiddenFor(m => m.customers.BirthDate)
+            @*@Html.HiddenFor(m => m.customers.BirthDate)*@
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.customers.MembershipTypeId)
             @Html.DropDownListFor(m => m.customers.MembershipTypeId, new SelectList(Model.membershiptypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
-            @Html.HiddenFor(m => m.customers.MembershipType)
+            @*@Html.HiddenFor(m => m.customers.MembershipType)*@
         </div>
             @*<div class="form-group">
                     @Html.LabelFor(m => m.IsSubscribedToNewsletter)
@@ -44,7 +45,7 @@
         <div class="checkbox">
             <label>
                 @Html.CheckBoxFor(m => m.customers.IsSubscribedToNewsletter) Subscribed to Newsletter?
-                @Html.HiddenFor(m => m.customers.IsSubscribedToNewsletter)
+                @*@Html.HiddenFor(m => m.customers.IsSubscribedToNewsletter)*@
             </label>
         </div>
             @Html.HiddenFor(m =>m.customers.Id)
