@@ -30,6 +30,7 @@
             @Html.LabelFor(m => m.customers.MembershipTypeId)
             @Html.DropDownListFor(m => m.customers.MembershipTypeId, new SelectList(Model.membershiptypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
             @*@Html.HiddenFor(m => m.customers.MembershipType)*@
+            @Html.ValidationMessageFor(m => m.customers.MembershipTypeId)
         </div>
             @*<div class="form-group">
                     @Html.LabelFor(m => m.IsSubscribedToNewsletter)
