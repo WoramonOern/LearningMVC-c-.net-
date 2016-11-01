@@ -11,7 +11,7 @@ namespace Vidly2.Models
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             var customer = (Customer)validationContext.ObjectInstance;
-            if (customer.MembershipTypeId == 0 || customer.MembershipTypeId == 1) // validation for pay as you go of membership type
+            if (customer.MembershipTypeId == MembershipType.Unknown || customer.MembershipTypeId == MembershipType.PayAsYouGo) // validation for pay as you go of membership type
                 return ValidationResult.Success; //IsValid
 
             if (customer.BirthDate == null)
