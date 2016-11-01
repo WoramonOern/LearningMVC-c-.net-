@@ -35,6 +35,7 @@ namespace Vidly2.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(CustomerMembershipTypeViewModel postCustomer)//(CustomerMembershipTypeViewModel viewModel) // customer class is easy to pass all of data
         {
             var customer = new Customer
